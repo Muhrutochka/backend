@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <strong>Аутентификация:</strong>
+        <ul>
+	    {% if user.is_authenticated %}
+           <p align="center"><li><a href="{% url 'account_email' %}">Change E-mail</a></li></p>
+	        <li><a href="{% url 'account_logout' %}">Выйти</a></li>
+	    {% else %}
+	        <li><a href="{% url 'account_login' %}">Войти</a></li>
+	        <li><a href="{% url 'account_signup' %}">Зарегистрироваться</a></li>
+	    {% endif %}
+        </ul>
+        </div>
+    </div>
+{% endblock %}
+
