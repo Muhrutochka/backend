@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="container">
+		<a href="{% url 'new_project_url' %}" >
+			<button type="button" class="btn btn-primary container-fluid my-4" name="button">New project</button>
+		</a>
+		<ul class="list-group">
+			{% for project in projects %}
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-8">
+							<p class="h4">{{project.name}}</p>
+						</div>
+						<div class="col-2">
+							<a href="{% url 'edit_project_url' project.id %}" >
+								<button type="button" class="btn btn-success container-fluid" name="button">Edit</button>
+							</a>
+						</div>
+						<div class="col-2">
+							<a href="{% url 'delete_project_url' project.id %}" >
+								<button type="button" class="btn btn-danger container-fluid" name="button">Delete</button>
+							</a>
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
