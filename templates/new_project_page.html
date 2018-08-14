@@ -1,5 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-	
+	<div class="container mt-4">
+		<h1>{{header}}</h1>
+		{% if error %}
+			<div class="alert alert-danger">
+				{{error_message}}
+			</div>
+		{% endif %}
+		<form class="" action="{{request.path}}" method="post">
+			{% csrf_token %}
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" name="name" required value="{{name}}">
+			</div>
+			<div class="form-group">
+				<label for="alias">Alias (for URL in REST requests):</label>
+				<input type="text" class="form-control " name="alias" required value="{{alias}}">
+			</div>
+			<div class="row">
+				<div class="col-1">
+					<button type="submit" class="btn btn-primary container-fluid">Save</button>
+				</div>
+				<div class="col-1">
+					<a href="{% url 'dashboard_url' %}">
+						<div class="btn btn-danger container-fluid">
+							Back
+						</div>
+					</a>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
 {% endblock %}
