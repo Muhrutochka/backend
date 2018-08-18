@@ -10,7 +10,8 @@
 				<li class="list-group-item">
 					<div class="row">
 						<div class="col-8">
-							<p class="h4">{{project.name}}</p>
+							<p class="h4">{{project.name}} ({{project.alias}})</p>
+							<p>Configuration: {{project.config.name}}</p>
 						</div>
 						<div class="col-2">
 							<a href="{% url 'edit_project_url' project.id %}" >

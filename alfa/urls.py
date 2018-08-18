@@ -10,5 +10,5 @@ urlpatterns = [
 	url(r'^config/new$', views.new_config_page, name='new_config_url'),
 	url(r'^config/delete/(?P<id>\d+)$', views.delete_config_page, name='delete_config_url'),
 	url(r'^config/edit/(?P<id>\d+)$', views.edit_config_page, name='edit_config_url'),
-
+	url(r'^rest/(?P<project>[A-Za-z0-9]+)/(?P<config>[A-Za-z0-9]+)$', views.rest, name='rest_url'),
 ]
