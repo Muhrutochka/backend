@@ -108,6 +108,7 @@ def edit_project_page(request, id):
 def config_page(request):
     context = {}
     context['configs'] = Config.objects.filter(user=request.user)
+    print(context['configs'])
     return render(request, 'config_page.html', context)
 
 
@@ -115,7 +116,6 @@ def config_page(request):
 def new_config_page(request):
     context = {}
     context['header'] = 'New configuration'
-    context['projects'] = Project.objects.filter(user=request.user)
     if request.method == 'POST':
         form = ConfigForm(request.POST)
         if form.is_valid():
@@ -125,12 +125,12 @@ def new_config_page(request):
             config.datastructure = re.sub('[^a-zA-Z;]', '', config.datastructure)
             if config.datastructure == form.cleaned_data['datastructure']:
                 config.save()
-                return HttpResponseRedirect(reverse('config_page.html'))
+                return HttpResponseRedirect(reverse('config_url'))
             else:
                 context['name'] = form.cleaned_data['name']
                 context['datastructure'] = form.cleaned_data['datastructure']
                 context['error'] = True
-                context['error_message'] = 'Bad alias (only digits and characters available).'
+                context['error_message'] = 'Bad datastructure (only characters available).'
                 return render(request, 'new_config_page.html', context)
         else:
             context['error'] = True
@@ -182,6 +182,6 @@ def edit_config_page(request, id):
     else:
         context['form'] = ConfigForm()
         context['name'] = config.name
-        context['alias'] = config.alias
+        context['datastructure'] = config.datastructure
         return render(request, 'new_config_page.html', context)
     return render(request, 'new_config_page.html', context)

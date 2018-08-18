@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-{#    <title>{{ title }}</title>#}
-{% load staticfiles %}
+    <meta charset="UTF-8">
+    {#    <title>{{ title }}</title>#}
+    {% load staticfiles %}
 
-    {# Load the tag library #}
-{% load bootstrap4 %}
+        {# Load the tag library #}
+    {% load bootstrap4 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-
-
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    {{ form.media.css }}
+</head>>
 
 <body>
 
@@ -54,5 +54,6 @@
   </div>
 
 </footer>
+{{ form.media.js }}
 </body>
 </html>

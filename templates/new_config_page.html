@@ -16,14 +16,24 @@
 			</div>
 			<div class="form-group">
 				<label for="alias">Data structure (words separated by a colon):</label>
-				<input type="text" class="form-control " name="alias" required value="{{alias}}">
+				<input type="text" class="form-control " name="datastructure" required value="{{datastructure}}">
+			</div>
+			<div class="form-group">
+				<label for="projects">Projects list:</label>
+                    {{ form.projects }}
+{#				                        <select multiple>#}
+{#                    {% for e in projects %}#}
+{#                        e#}
+{#                        <option value="volvo">e</option>#}
+{#                    {% endfor %}#}
+                </select>
 			</div>
 			<div class="row">
 				<div class="col-1">
 					<button type="submit" class="btn btn-primary container-fluid">Save</button>
 				</div>
 				<div class="col-1">
-					<a href="{% url 'dashboard_url' %}">
+					<a href="{% url 'config_url' %}">
 						<div class="btn btn-danger container-fluid">
 							Back
 						</div>

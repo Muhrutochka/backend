@@ -7,6 +7,7 @@ class Config(models.Model):
     datastructure = models.CharField(max_length=150, default='')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='configs', null=True, default=None)
 
+
 class Project(models.Model):
 	name = models.CharField(max_length=100, default='')
 	alias = models.CharField(max_length=100, default='')
